@@ -32,7 +32,24 @@ const DoctorAgentCard = ({ doctorAgent }: props) => {
     const paidUser = has && has({ plan: 'pro' })
 
     const isLocked = doctorAgent.subscriptionRequired && !paidUser
-
+const startConsultation = async () => {
+    setLoading(true);
+    try {
+      const result = await axios.post("/api/session-chat", {
+        notes: "Call with AI Agent",
+        selectedDoctor:doctorAgent,
+      });
+      console.log(result.data);
+      if (result.data?.sessionId) {
+        console.log(result.data.sessionId);
+        router.push(`/dashboard/medical-agent/${result.data.sessionId}`);
+      }
+    } catch (err) {
+      console.error("❌ API /session-chat failed:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
     return (
         <div className={`h-[380px] flex flex-col justify-between relative ${isLocked ? 'backdrop-blur-sm opacity-60 pointer-events-none' : ''}`}>
             {doctorAgent.subscriptionRequired == true && (
@@ -53,7 +70,7 @@ const DoctorAgentCard = ({ doctorAgent }: props) => {
             <Button
                 className="w-full mt-2 flex items-center justify-center gap-2"
                 disabled={isLocked || history.length>=1}
-                // onClick={startConsultation}
+                onClick={startConsultation}
             >
                 Start Consultation
                 {loading ? (
