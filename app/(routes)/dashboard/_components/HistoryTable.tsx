@@ -11,12 +11,15 @@ import {
 import { SessionDetails } from "../medical-agent/[sessionId]/page";
 import moment from "moment";
 import ViewReport from "./ViewReport";
+import { useTheme } from "next-themes";
 
 type Props = {
   historyList: SessionDetails[];
 };
 
 const HistoryTable = ({ historyList }: Props) => {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   return (
     <div className="rounded-2xl border border-gray-200 shadow-md overflow-x-auto">
       <Table>
@@ -37,10 +40,10 @@ const HistoryTable = ({ historyList }: Props) => {
               key={idx}
               className="hover:bg-gray-50 transition-all duration-150"
             >
-              <TableCell className="font-medium text-gray-800">
+              <TableCell className={`font-medium ${isDark? "text-gray-300":"text-gray-800"}`}>
                 {record?.selectedDoctor?.specialist}
               </TableCell>
-              <TableCell className="text-gray-700 max-w-sm truncate">
+              <TableCell className={`${isDark?"text-gray-400":"text-gray-700"} max-w-sm truncate`}>
                 {record.notes}
               </TableCell>
               <TableCell className="text-gray-600">
