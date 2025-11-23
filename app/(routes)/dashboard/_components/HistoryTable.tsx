@@ -40,16 +40,16 @@ const HistoryTable = ({ historyList }: Props) => {
               key={idx}
               className="hover:bg-gray-50 transition-all duration-150"
             >
-              <TableCell className={`font-medium ${isDark? "text-gray-300":"text-gray-800"}`}>
+              <TableCell className={`font-medium ${isDark? "text-gray-300 bg-black" :"text-gray-800"}`}>
                 {record?.selectedDoctor?.specialist}
               </TableCell>
-              <TableCell className={`${isDark?"text-gray-400":"text-gray-700"} max-w-sm truncate`}>
+              <TableCell className={`${isDark?"text-gray-400 bg-black":"text-gray-700"} max-w-sm truncate`}>
                 {record.notes}
               </TableCell>
-              <TableCell className="text-gray-600">
+              <TableCell className={`${isDark?"text-gray-400 bg-black":"text-gray-60"}`}>
                 {moment(new Date(record.createdOn)).fromNow()}
               </TableCell>
-              <TableCell className="text-right">
+              <TableCell className={`text-right ${isDark?"bg-black":"bg-white"}`}>
                 <ViewReport record={record as any} />
               </TableCell>
             </TableRow>

@@ -28,11 +28,14 @@
     "next": "15.3.5",
     "next-themes": "^0.4.6",
     "openai": "^5.9.0",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^5.4.394",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-use-measure": "^2.1.7",
     "sonner": "^2.0.6",
     "tailwind-merge": "^3.3.1",
+    "tesseract.js": "^2.1.5",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

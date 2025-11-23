@@ -50,7 +50,7 @@ export const AIDoctorAgents = [
         description: "Focuses on heart health and blood pressure issues.",
         image: "/doctor6.png",
         agentPrompt: "You are a calm Cardiologist AI. Ask about heart symptoms and offer brief, helpful advice.",
-        voiceId: "charlotte",
+        voiceId: "will",
         subscriptionRequired: true
     },
     {
